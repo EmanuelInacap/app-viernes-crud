@@ -21,7 +21,6 @@ if(editIndex!==null){
 }else{
   setStudents([...students,{name,age}])
 }
-  setStudents([...students,{name,age}])
   setName('')
   setAge('') 
 }
