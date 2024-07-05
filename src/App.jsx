@@ -13,6 +13,14 @@ function App() {
   
 const handleSubmit=(event)=>{
 event.preventDefault()
+if(editIndex!==null){
+  const newStudents=[...students]
+  newStudents[editIndex]={name,age}
+  setStudents(newStudents)
+  setEditIndex(null)
+}else{
+  setStudents([...students,{name,age}])
+}
   setStudents([...students,{name,age}])
   setName('')
   setAge('') 
