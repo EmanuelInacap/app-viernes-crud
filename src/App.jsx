@@ -16,6 +16,11 @@ event.preventDefault()
   setName('')
   setAge('') 
 }
+const handleDelete=(index)=>{
+  const newStudents=[...students]
+  newStudents.splice(index,1)
+  setStudents(newStudents)
+}
 
 
   return (
@@ -52,7 +57,7 @@ event.preventDefault()
               <Card.Title>Datos Estudiante</Card.Title>
                <Card.Text>Nombre:{student.name} </Card.Text>
                <Card.Text>Edad:{student.age} </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Button variant="danger" onClick={()=>handleDelete(index)}>Eliminar</Button>
             </Card.Body>
           </Card>
            </Col>
