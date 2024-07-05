@@ -9,6 +9,7 @@ function App() {
   const [students,setStudents]=useState([])
   const [name,setName]=useState('')
   const [age,setAge]=useState('')
+  const [editIndex,setEditIndex]=useState(null)
   
 const handleSubmit=(event)=>{
 event.preventDefault()
@@ -20,6 +21,13 @@ const handleDelete=(index)=>{
   const newStudents=[...students]
   newStudents.splice(index,1)
   setStudents(newStudents)
+}
+
+const handleEdit=(index)=>{
+  setName(students[index].name)
+  setAge(students[index].age)
+  setEditIndex(index)
+
 }
 
 
@@ -42,7 +50,11 @@ const handleDelete=(index)=>{
         
        
        
-        <Button type="submit">Agregar estudiante</Button>
+        <Button type="submit">
+          {
+          editIndex!==null?'Editar Estudiante':'Agregar Estudiante'
+          }
+          </Button>
     
     </Form>
     </Row>
@@ -58,6 +70,7 @@ const handleDelete=(index)=>{
                <Card.Text>Nombre:{student.name} </Card.Text>
                <Card.Text>Edad:{student.age} </Card.Text>
               <Button variant="danger" onClick={()=>handleDelete(index)}>Eliminar</Button>
+              <Button variant="warning" onClick={()=>handleEdit(index)}>Modificar</Button>
             </Card.Body>
           </Card>
            </Col>
